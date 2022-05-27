@@ -1,0 +1,57 @@
+#include<iostream>
+using namespace std;
+
+struct inventory
+{
+   char pname[20];
+   float price;
+   int onhand;
+};
+
+typedef unsigned int UI;
+
+inventory *dma(UI &);
+void accept(const UI &,inventory *);
+void display(const UI &,const inventory *);
+
+int main()
+{
+   inventory*ar=NULL;
+   UI n;
+   ar=dma(n);
+   accept(n,ar);
+   display(n,ar);
+   return 0;
+}
+
+inventory *dma(UI &n)
+{
+   inventory *t;
+   cout<<"Enter value for n = ";
+   cin>>n;
+   t=new inventory[n];
+   if(t!=NULL)
+     return t;
+   else
+     exit(1);
+}
+
+void accept(const UI &n,inventory *ar)
+{
+   cout<<"Enter "<<n<<"Inventory values = "<<endl;
+   for(int i=0;i<n;i++){
+      cin>>ar[i].pname;
+      cin>>ar[i].onhand;
+      cin>>ar[i].price;
+   }
+}
+
+void display(const UI &n,const inventory *ar)
+{
+   cout<<"Array Elements = "<<endl;
+   for(int i=0;i<n;i++){
+      cout<<ar[i].pname;
+      cout<<" "<<ar[i].onhand;
+      cout<<" "<<ar[i].price<<endl;
+   }
+}

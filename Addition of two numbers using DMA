@@ -1,0 +1,46 @@
+#include<iostream>
+using namespace std;
+
+int *dma(void)
+{
+   int *t;
+   t=new int;
+   if(t!=NULL)
+     return t;
+   else
+     exit(1);
+}
+
+void accept(int *p,int *q)
+{
+   cout<<"Enter values for a and b = ";
+   cin>>(*p)>>(*q);
+}
+
+void display(const int *p,const int *q,const int *r)
+{
+   cout<<*p<<"+"<<*q<<"="<<*r<<endl;
+}
+
+void display1(const int &p,const int &q,const int &r)
+{
+   cout<<p<<"+"<<q<<"="<<r;
+}
+
+void add(const int *p,const int *q,int *r)
+{
+   *r=*p+*q;
+}
+
+int main()
+{
+   int *a,*b,*c;
+   a=dma();
+   b=dma();
+   c=dma();
+   accept(a,b);
+   add(a,b,c);
+   display(a,b,c);
+   display1(*a,*b,*c);
+   return 0;
+}

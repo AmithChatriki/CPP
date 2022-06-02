@@ -1,0 +1,73 @@
+#include<iostream>
+using namespace std;
+
+class stack
+{
+   int top,a[10];
+   #define MAX 3
+   public : stack()
+            {
+               top=-1;
+            }
+            void push();
+            void pop();
+            void display();
+};
+
+void stack::push()
+{
+   if(this->top==MAX-1)
+   {
+      cout<<"Stack is Full \n";
+      return;
+   }
+   cout<<"Enter the value = ";
+   cin>>this->a[++top];
+}
+
+void stack::pop()
+{
+   if(top==-1)
+   {
+      cout<<"Stack is Empty \n";
+      return;
+   }
+   cout<<"Element Popped = "<<this->a[(this->top)--]<<endl;
+}
+
+void stack::display()
+{
+   if(top==-1)
+   {
+      cout<<"Stack is Empty \n";
+      return;
+   }
+   cout<<"Stack Contents = "<<endl;
+   for(int i=top;i>=0;i--)
+      cout<<a[i]<<endl;
+}
+
+int main()
+{
+   stack s;
+   int ch;
+   for(;;)
+   {
+      cout<<"1.Push\n2.Pop\n3.Displau\n4.Exit\nEnter the Choice = ";
+      cin>>ch;
+      switch(ch)
+      {
+         case 1 : s.push();
+                  break;
+         case 2 : s.pop();
+                  break;
+         case 3 : s.display();
+                  break;
+         case 4 : exit(0);
+         
+         default: cout<<"Invalid Choice"<<endl;
+                  break;
+      }
+   }
+   return 0;
+}

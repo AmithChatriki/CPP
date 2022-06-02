@@ -1,0 +1,26 @@
+#include<iostream>
+using namespace std;
+
+class complex
+{
+   int r,i;
+   public : complex() : r(0),i(0) {}
+            complex(int p) : r(p),i(0) {}
+            complex(int p,int q) : r(p),i(q) {}
+            
+            void display()
+            {
+               cout<<r<<" "<<i<<endl;
+            }
+};
+
+int main()
+{
+   complex c1;
+   complex c2(10,20);
+   complex c3(30);
+   c1.display();
+   c2.display();
+   c3.display();
+   return 0;
+}

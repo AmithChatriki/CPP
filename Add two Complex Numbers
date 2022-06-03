@@ -1,0 +1,39 @@
+#include<iostream>
+using namespace std;
+
+class complex
+{
+   int r,i;
+   public : void accept();
+            complex add(const complex &)const;
+            void display()const;
+};
+
+void complex::accept()
+{
+   cout<<"Enter values for r & i = ";
+   cin>>this->r>>this->i;
+}
+
+void complex::display()const
+{
+   cout<<r<<"+"<<i<<"i"<<endl;
+}
+
+complex complex::add(const complex &c)const
+{
+   complex t;
+   t.r=this->r+c.r;
+   t.i=this->i+c.i;
+   return t;
+}
+
+int main()
+{
+   complex c1,c2,res;
+   c1.accept();
+   c2.accept();
+   res = c1.add(c2);
+   res.display();
+   return 0;
+}

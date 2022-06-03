@@ -1,0 +1,21 @@
+#include<iostream>
+using namespace std;
+
+struct complex
+{
+   int *r;
+   int *i;
+};
+
+int main()
+{
+   complex c1 = {new int(20),new int(10)};
+   complex c2=c1;  //SHALLOW COPY
+   cout<<c1.r<<" "<<c1.i<<endl;
+   cout<<c2.r<<" "<<c2.i<<endl;
+   
+   complex c3 = {new int(*c1.r),new int(*c1.i)};  //DEEP COPY
+   cout<<c3.r<<" "<<c3.i<<endl;
+   
+   return 0;
+}

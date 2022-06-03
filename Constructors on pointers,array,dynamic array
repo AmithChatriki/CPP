@@ -1,0 +1,58 @@
+#include<iostream>
+using namespace std;
+
+class complex
+{
+   int r,i;
+   public : complex();
+            complex(int );
+            complex(int ,int );
+            void display();
+};
+
+complex::complex():r(0),i(0)
+{
+   cout<<"In ZPC"<<endl<<this<<endl;
+}
+
+complex::complex(int p):r(p),i(0)
+{
+   cout<<"In 1PC"<<endl<<this<<endl;
+}
+
+complex::complex(int p,int q):r(p),i(q)
+{
+   cout<<"In 2PC"<<endl<<this<<endl;
+}
+
+void complex::display()
+{
+   cout<<r<<" "<<i<<endl;
+}
+
+int main()
+{
+   complex *p=NULL;
+   p = new complex;  //ZPC
+   cout<<p<<endl;
+   p->display();
+   delete p;
+   
+   p = new complex(10);  //1PC
+   cout<<p<<endl;
+   p->display();
+   delete p;
+   
+   p = new complex[3];  //ZPC
+   for(int i=0;i<3;i++)
+      cout<<&p[i]<<endl;
+   
+   for(int i=0;i<3;i++)
+      p[i].display();
+     
+   complex q[3] = {complex(),complex(10),complex(10,20)};
+   for(int i=0;i<3;i++)
+      cout<<&q[i]<<endl;
+   
+   return 0;
+}

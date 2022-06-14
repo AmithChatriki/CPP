@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+
+class student
+{
+	char nm[30],usn[30];
+	int marks;
+	friend void accept(student &);
+	friend void display(const student &);
+};
+
+void accept(student &p)
+{
+	cin>>p.nm>>p.usn>>p.marks;
+}
+
+void display(const student &p)
+{
+	cout<<p.nm<<" "<<p.usn<<" "<<p.marks;
+}
+
+int main()
+{
+	student sobj;
+	accept(sobj);
+	display(sobj);
+	return 0;
+}

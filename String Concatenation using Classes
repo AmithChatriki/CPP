@@ -1,0 +1,77 @@
+#include<iostream>
+#include <cstring>
+using namespace std;
+
+class string1
+{
+	char *s;
+	public : string1():s(NULL){}
+			 string1(char *p)
+			 {
+			 	s = new char[strlen(p)+1];
+			 	strcpy(s,p);
+			 }
+			 string1(const string1 &r)
+			 {
+			 	s = new char[strlen(r.s)+1];
+			 	strcpy(s,r.s);
+			 }
+			 string1 concat(const string1 &)const;
+			 void concat2(const string1 &,const string1 &);
+	
+	friend void accept(string1 &);
+	friend void display(string1 &);
+	friend string1 concat1(string1 &,string1 &);		 
+};
+
+void accept(string1 &r)
+{
+	char *p = new char[200];
+	cin>>p;
+	r.s = new char[strlen(p)+1];
+	strcpy(r.s,p);
+	delete []p;
+}
+
+void display(string1 &r)
+{
+	cout<<r.s<<endl;
+}
+
+string1 string1::concat(const string1 &r)const
+{
+	string1 t;
+	t.s = new char[strlen(s)+strlen(r.s)+1];
+	strcat(t.s,s);
+	strcat(t.s,r.s);
+	return t;
+}
+
+string1 concat1(string1 &p,string1 &q)
+{
+	string1 t;
+	t.s = new char[strlen(p.s)+strlen(q.s)+1];
+	strcpy(t.s,p.s);
+	strcat(t.s,q.s);
+	return t;
+}
+
+void string1::concat2(const string1 &p,const string1 &q)
+{
+	s = new char[strlen(p.s)+strlen(q.s)+1];
+	strcpy(s,p.s);
+	strcat(s,q.s);
+}
+
+int main()
+{
+	string1 s1("RNSIT");
+	string1 s2;
+	accept(s2);
+	string1 s3;
+	//s3 = s1.concat(s2);
+	//s3 = concat1(s1,s2);
+	s3.concat2(s1,s2);
+	display(s3);
+    return 0;
+}

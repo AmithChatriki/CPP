@@ -18,6 +18,7 @@ class string1
 			 }
 			 string1 concat(const string1 &)const;
 			 void concat2(const string1 &,const string1 &);
+			 void operator=(const string1 &);
 	
 	friend void accept(string1 &);
 	friend void display(string1 &);
@@ -47,6 +48,13 @@ string1 string1::concat(const string1 &r)const
 	return t;
 }
 
+void string1::operator=(const string1 &r)
+{
+	s = new char[strlen(r.s)+1];
+	strcpy(s,r.s);
+	cout<<"End of Operator"<<endl;
+}
+
 string1 concat1(string1 &p,string1 &q)
 {
 	string1 t;
@@ -69,9 +77,10 @@ int main()
 	string1 s2;
 	accept(s2);
 	string1 s3;
+	s3.operator=(s1.concat(s2));
 	//s3 = s1.concat(s2);
 	//s3 = concat1(s1,s2);
-	s3.concat2(s1,s2);
+	//s3.concat2(s1,s2);
 	display(s3);
     return 0;
 }
